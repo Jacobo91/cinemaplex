@@ -1,0 +1,121 @@
+:root {
+  --clr-black: #141414;
+  --clr-red: #E50C14;
+  --clr-green: #48D368;
+  --clr-white: #FFFFFF;
+
+  --spacer: 1rem;
+  --rounded: 1rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+/* utilities */
+
+.flow-content > * + * {
+  margin-top: var(--spacer);
+}
+
+.flex {
+  display: flex;
+  flex-direction: var(--flex-dir, row);
+  align-items: var(--alignItems, center);
+  gap: var(--gap, 0px);
+}
+
+/* components */
+
+/* navbar */
+nav {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--clr-black);
+  color: var(--clr-white);
+  height: 74px;
+}
+
+.fa-film {
+  color: var(--clr-red);
+  font-size: 1.4rem;
+}
+
+.nav__menu {
+  --gap: var(--spacer);
+}
+
+nav ul {
+  --gap: var(--spacer);
+}
+
+nav ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav li > * {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.active {
+  color: inherit;
+}
+
+/* searchbar */
+
+.searchbar-wrapper.activeSearch {
+  border: 1px solid var(--clr-white);
+  display: flex;
+  padding: 0.5rem;
+}
+
+.searchbar-form {
+  background: var(--clr-white);
+  background: inherit;
+}
+
+.searchbar-wrapper button {
+  padding: 0;
+  background: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-magnifying-glass {
+  margin-inline: 0.5rem;
+  border: none;
+  font-size: 1.3rem;
+}
+
+.searchbar {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  background: inherit;
+  color: inherit;
+  cursor:text;
+  display: none;
+}
+
+.activeSearch {
+  display: block;
+}
+
+.searchbar::placeholder {
+  color: inherit;
+}
+

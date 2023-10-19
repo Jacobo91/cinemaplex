@@ -1,0 +1,5 @@
+export { default as Home } from './Home.page'
+export { default as Movies } from './Movies.page'
+export { default as Shows } from './Shows.page'
+export { default as Navbar } from './Navbar'
+export { default as Searchbar } from './Searchbar'
