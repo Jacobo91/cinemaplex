@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home, 
         Movies, 
         Shows,
-        Navbar  } from './components'
+        Navbar,
+        Trailer,
+        Info} from './components'
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shows" element={<Shows />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/trailer/:path" element={<Trailer />} />
+        <Route path="/Info/:id" element={<Info />} />
       </Routes>
     </BrowserRouter>
   )

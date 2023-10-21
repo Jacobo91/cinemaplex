@@ -21,19 +21,20 @@ export default function Searchbar() {
     }, []);
 
     return (
-        <div ref={searchBarRef} className={`searchbar-wrapper ${isOpen ? "activeSearch" : ""}`}>
+        <div ref={searchBarRef} className={`searchbar-wrapper flex ${isOpen ? "searchbar-wrapper-active" : ""}`}>
             <button
-                onClick={() => setIsOpen(prev => !prev)}
+                onClick={() => setIsOpen(prev => !prev)} 
+                className={`nav-btn nav-btn--searchbar ${isOpen ? "btn-to-right" : ""}`}
             >
                 <i className="fa-solid fa-magnifying-glass"></i>
             </button>
             <form 
                 action=""
-                className="searchbar-form flex"
+                className={`searchbar-form flex  ${isOpen ? "activeSearch" : ""}`}
                 onSubmit={() => {}}
             >
                 <input
-                    className={`searchbar ${isOpen ? "activeSearch" : ""}`}
+                    className={`searchbar`}
                     type="search" 
                     value={searchTerm}
                     placeholder="Search..."
