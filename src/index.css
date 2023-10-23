@@ -61,6 +61,15 @@ body {
   height: 100% !important;
 }
 
+.genres {
+  margin-right: var(--spacer);
+}
+
+.source {
+  text-transform: capitalize;
+  color: var(--clr-red);
+}
+
 /* components */
 
 /* navbar */
@@ -191,6 +200,12 @@ nav li > * {
 
 .hero {
   position: relative;
+  max-height: 90vh;
+}
+
+.hero img {
+  max-height: 90vh;
+  object-fit: cover;
 }
 
 .hero_content-type {
@@ -241,6 +256,34 @@ nav li > * {
 .btn i {
   margin-right: 0.5rem;
 }
+
+/* Trailer */
+
+.trailer__title {
+  text-align: center;
+  margin-block: calc(var(--spacer) * 1);
+}
+
+.trailer__info {
+  padding: var(--spacer);
+  justify-content: space-between;
+}
+
+/* Info */
+
+.info {
+  padding: var(--spacer);
+}
+
+.info-container {
+
+}
+
+.info__rating {
+  justify-content: space-between;
+}
+
+/* media queries */
 
 @media (min-width: 50rem) {
   .nav__menu-wrapper {

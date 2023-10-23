@@ -46,7 +46,7 @@ export default function Hero ({ heroMedia }) {
                 <h2 className="hero_content-type">{heroMedia.contentType}</h2>
                 <div className="hero__text-container flow-content flow-content--large">
                     <span className="hero-title">
-                        {`${heroMedia.title.length > 13 ? heroMedia.title.slice(0, 15) + "..." : heroMedia.title}`}
+                        {`${heroMedia.title.length > 16 ? heroMedia.title.slice(0, 18) + "..." : heroMedia.title}`}
                     </span>
 
                     {windowWidth > 800 && (<p className="hero-text" >
@@ -62,7 +62,7 @@ export default function Hero ({ heroMedia }) {
                             <i className="fa-solid fa-play"></i> Trailer
                         </Link>
                         <Link
-                            to={`/info/${heroMedia["_id"]}`}
+                            to={`/info/${`${heroMedia.contentType}-${heroMedia["_id"]} `}`}
                             className="btn"
                         >
                             <i className="fa-solid fa-circle-info"></i> Info

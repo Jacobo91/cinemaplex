@@ -1,7 +1,36 @@
-
+import { useAPI } from "../hooks/useAPI";
+import { Hero } from './'
 
 export default function Movies() {
+
+    const { isLoading, error, data } = useAPI(
+        'movies',
+        'movies',
+        {refetchOnWindowFocus: false,}
+        );
+
+    if (isLoading) {
+        return <h2>Loading...</h2>
+    }
+
+    if (error) {
+        return <p>{error.message}</p>
+    }
+    
+    const randomItem = Math.floor(Math.random() * 26);
+    const heroMedia = data?.data?.movies[randomItem];
+
     return (
-        <div>Movies page</div>
+        <section
+        className="movies"
+    >
+
+        <Hero  heroMedia={heroMedia}/>
+
+        <main>
+
+        </main>
+
+    </section>
     )
 }

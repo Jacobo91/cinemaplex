@@ -1,6 +1,6 @@
 import ReactPlayer from 'react-player'
 import { useAPI } from '../hooks/useAPI'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export default function Trailer() {
 
@@ -26,22 +26,32 @@ export default function Trailer() {
         return <p>{error.message}</p>
     }
 
-    const { movie, similarMovies } = data;
-
     return (
         <section
             className='trailer'
         >
-            <h1>{data?.data?.movie.title}</h1>
+            <h1 className='trailer__title'>{data?.data?.[type].title}</h1>
             <div className="player-container">
                 <ReactPlayer 
-                    url={data?.data?.movie["youtube_trailer"]}
+                    url={data?.data?.[type]["youtube_trailer"]}
                     controls
                     className="react-player"
                 />
             </div>
             
-
+            <div className='trailer__info flex'>
+                <div className="trailer__info-genres">
+                    {[...new Set(data?.data?.[type].genres)].map((genre, i) => {
+                        return <span key={i} className='genres'>{genre}</span>
+                    })}
+                </div>
+                <Link
+                    to={`/info/${`${type}-${data?.data?.[type]["_id"]}`}`}
+                    className="btn"
+                >
+                    <i className="fa-solid fa-circle-info"></i> Info
+                </Link>
+            </div>
         
         </section>
     )
