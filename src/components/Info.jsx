@@ -1,5 +1,6 @@
 import { useAPI } from '../hooks/useAPI'
 import { Link, useParams } from 'react-router-dom'
+import Rating from '@mui/material/Rating';
 
 export default function Info() {
 
@@ -39,7 +40,7 @@ export default function Info() {
                     />
                 </div>
 
-                <div className="info__text flow-content">
+                <div className="info__text">
                     <h2>{data?.data?.[type]["title"]}</h2>
 
                     <div className="genres">
@@ -55,9 +56,15 @@ export default function Info() {
                     </div>
 
                     <div className='info__rating flex'>
-                        <p>{data?.data?.[type]["vote_average"]}</p>
+                        <Rating 
+                            name='rating'
+                            value={data?.data?.[type]["vote_average"] / 2}
+                            precision={0.5}
+                        />
                         <p>{data?.data?.[type]["first_aired"]}</p>
                     </div>
+
+                    <p>{data?.data?.[type]["overview"]}</p>
 
                 </div>
 
@@ -70,5 +77,3 @@ export default function Info() {
         </section>
     )
 }
-
-// vote_average - first_aired
