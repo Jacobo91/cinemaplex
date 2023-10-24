@@ -70,6 +70,10 @@ body {
   color: var(--clr-red);
 }
 
+.source {
+  margin-right: var(--spacer);
+}
+
 /* components */
 
 /* navbar */
@@ -219,7 +223,7 @@ nav li > * {
 }
 
 .hero-title {
-  font-size: 8vw;
+  font-size: 4vw;
 }
 
 .hero-text {
@@ -251,6 +255,7 @@ nav li > * {
   border: none;
   display: inline-block;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
 .btn i {
@@ -294,6 +299,11 @@ nav li > * {
   gap: calc(var(--spacer) * 2);
   align-self: flex-end;
   padding-bottom: var(--spacer);
+}
+
+.info__text .btn {
+  width: 180px;
+  padding: 1rem;
 }
 
 .info__rating {

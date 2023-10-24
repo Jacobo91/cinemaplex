@@ -42,6 +42,13 @@ export default function Info() {
 
                 <div className="info__text">
                     <h2>{data?.data?.[type]["title"]}</h2>
+                
+                    <Link
+                        to={`/trailer/${`${type}-${data?.data?.[type]["_id"]} `}`}
+                        className='btn'
+                    >
+                        <i className="fa-solid fa-play"></i> Trailer
+                    </Link>
 
                     <div className="genres">
                     {[...new Set(data?.data?.[type].genres)].map((genre, i) => {

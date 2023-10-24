@@ -46,7 +46,7 @@ export default function Hero ({ heroMedia }) {
                 <h2 className="hero_content-type">{heroMedia.contentType}</h2>
                 <div className="hero__text-container flow-content flow-content--large">
                     <span className="hero-title">
-                        {`${heroMedia.title.length > 16 ? heroMedia.title.slice(0, 18) + "..." : heroMedia.title}`}
+                        {`${heroMedia.title.length > 40 ? heroMedia.title.slice(0, 41) + "..." : heroMedia.title}`}
                     </span>
 
                     {windowWidth > 800 && (<p className="hero-text" >
