@@ -1,5 +1,7 @@
 import { useAPI } from "../hooks/useAPI";
-import { Hero } from './'
+import { groupByGenre } from "../utils/groupByGenre";
+import { Hero } from './';
+import { Carousel } from './';
 
 export default function Shows() {
 
@@ -20,6 +22,8 @@ export default function Shows() {
     const randomItem = Math.floor(Math.random() * 26);
     const heroMedia = data?.data?.movies[randomItem];
 
+    const media = groupByGenre(data);
+
     return (
         <section
             className="shows"
@@ -28,7 +32,15 @@ export default function Shows() {
             <Hero  heroMedia={heroMedia}/>
 
             <main>
-
+                {media?.map((mediaInfo) => {
+                    return (
+                        <Carousel
+                            key={mediaInfo.genre}
+                            mediaInfo={mediaInfo.shows}
+                            genre={mediaInfo.genre}
+                        />
+                    )
+                })}
             </main>
 
         </section>

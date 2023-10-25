@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 const HeroMediaProps = {
     _id: PropTypes.string,
     backdrop_path: PropTypes.string,
+    first_aired:PropTypes.string,
     genres: PropTypes.array,
     original_title: PropTypes.string,
     overview: PropTypes.string,
