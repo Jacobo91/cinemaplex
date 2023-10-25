@@ -79,7 +79,7 @@ h2 {
 }
 
 main {
-  padding-left: 2rem;
+  padding: 0 0 2rem 2rem;
 }
 
 main h2 {
@@ -325,12 +325,34 @@ nav li > * {
 
 /* carousel */
 
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel-inner-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.bnt-previous {
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+}
+
+.btn-next {
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  height: 100%;
+}
+
 .carousel {
   display: flex;
   aspect-ratio: 16/9;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  max-height: 200px;
+  overflow: hidden;
+  max-height: 150px;
   width: 100%;
   gap: var(--spacer);
 }
@@ -339,18 +361,41 @@ nav li > * {
   flex: 0 0 20%;
   min-width: 200px;
   max-width: 260px;
-  scroll-snap-align: center;
+  color: var(--clr-white);
+  position: relative;
+  scroll-snap-type: x mandatory;
 }
 
 .carousel img {
   scroll-snap-align: center;
   width: 100%;
   border-radius: var(--rounded);
+  scroll-snap-align: center;
 }
 
 .carousel__card-title {
-  display: inline-block;
+  display: block;
   margin-top: 1rem;
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  border-radius: var(--rounded);
+}
+
+
+.carousel-inner-wrapper button {
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.btn-off {
+  display: none;
 }
 
 /* media queries */

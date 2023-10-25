@@ -32,12 +32,13 @@ export default function Movies() {
         <Hero  heroMedia={heroMedia}/>
 
         <main>
-            {media?.map((mediaInfo) => {
+            {media?.map((mediaInfo, index) => {
                 return (
                     <Carousel
                         key={mediaInfo.genre}
                         mediaInfo={mediaInfo.shows}
                         genre={mediaInfo.genre}
+                        carouselId={index}
                     />
                 )
             })}
