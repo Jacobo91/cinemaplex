@@ -18,30 +18,27 @@ const handleScroll = (direction) => {
         direction === "left" ? scrollPosition - itemWidth : scrollPosition + itemWidth;
 
     if (newPosition < 0) {
-        // Wrap around to the end if scrolling left from the beginning
         newPosition = carousel.scrollWidth - carousel.clientWidth;
     } else if (newPosition > carousel.scrollWidth - carousel.clientWidth) {
-        // Wrap around to the beginning if scrolling right from the end
         newPosition = 0;
     }
 
     if (carousel) {
-        // Use requestAnimationFrame for smooth scrolling
         const startTime = performance.now();
-        const duration = 500; // Adjust the duration as needed
+        const duration = 20;
         const animateScroll = (currentTime) => {
             const elapsedTime = currentTime - startTime;
             if (elapsedTime < duration) {
                 const position = scrollPosition + (newPosition - scrollPosition) * (elapsedTime / duration);
                 carousel.scrollTo({
                     left: position,
-                    behavior: "auto",
+                    behavior: "smooth",
                 });
                 requestAnimationFrame(animateScroll);
             } else {
                 carousel.scrollTo({
                     left: newPosition,
-                    behavior: "auto",
+                    behavior: "smooth",
                 });
                 setScrollPosition(newPosition);
             }
