@@ -15,8 +15,13 @@ export function groupByGenre(data) {
 
     const results = Object.keys(arrangedData).map((genre) => ({
         genre: genre.toLowerCase(),
-        shows: arrangedData[genre]
-    }))
+        shows: [...new Set(arrangedData[genre].map((show) => show.title))].map(
+            (uniqueTitle) => {
+                return arrangedData[genre].find((show) => show.title === uniqueTitle);
+            }
+        ),
+    }));
+
 
     return results;
 }

@@ -333,7 +333,6 @@ nav li > * {
   max-height: 200px;
   width: 100%;
   gap: var(--spacer);
-
 }
 
 .carousel__image-wrapper {
@@ -346,6 +345,7 @@ nav li > * {
 .carousel img {
   scroll-snap-align: center;
   width: 100%;
+  border-radius: var(--rounded);
 }
 
 .carousel__card-title {
