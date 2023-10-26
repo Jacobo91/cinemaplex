@@ -110,7 +110,7 @@ nav {
   height: 74px;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10000;
 }
 
 .fa-film {
@@ -352,7 +352,7 @@ nav li > * {
   display: flex;
   aspect-ratio: 16/9;
   overflow: hidden;
-  max-height: 150px;
+  max-height: 200px;
   width: 100%;
   gap: var(--spacer);
 }
@@ -363,7 +363,7 @@ nav li > * {
   max-width: 260px;
   color: var(--clr-white);
   position: relative;
-  scroll-snap-type: x mandatory;
+  text-decoration: none;
 }
 
 .carousel img {
@@ -373,25 +373,16 @@ nav li > * {
   scroll-snap-align: center;
 }
 
-.carousel__card-title {
-  display: block;
-  margin-top: 1rem;
-  position: absolute;
-  z-index: 50;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  border-radius: var(--rounded);
-}
-
-
 .carousel-inner-wrapper button {
   background: rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.carousel__card-title {
+  margin-top: 1rem;
 }
 
 .btn-off {

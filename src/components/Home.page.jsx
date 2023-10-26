@@ -21,7 +21,7 @@ export default function Home() {
 
     const randomItem = Math.floor(Math.random() * 26);
     const heroMedia = data?.data[0].movies[randomItem];
-
+    console.log(data)
     return (
             <section
                 className="home"

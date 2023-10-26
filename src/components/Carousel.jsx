@@ -11,47 +11,9 @@ const carouselRef = useReducer(null);
 const showsOrMovies = mediaInfo?.movies || mediaInfo;
 const title = mediaInfo?.title || genre;
 
-const handleScroll = (direction) => {
-    const carousel = carouselRef.current;
-    const itemWidth = carousel.scrollWidth / showsOrMovies.length;
-    let newPosition =
-        direction === "left" ? scrollPosition - itemWidth : scrollPosition + itemWidth;
-
-    if (newPosition < 0) {
-        newPosition = carousel.scrollWidth - carousel.clientWidth;
-    } else if (newPosition > carousel.scrollWidth - carousel.clientWidth) {
-        newPosition = 0;
-    }
-
-    if (carousel) {
-        const startTime = performance.now();
-        const duration = 20;
-        const animateScroll = (currentTime) => {
-            const elapsedTime = currentTime - startTime;
-            if (elapsedTime < duration) {
-                const position = scrollPosition + (newPosition - scrollPosition) * (elapsedTime / duration);
-                carousel.scrollTo({
-                    left: position,
-                    behavior: "smooth",
-                });
-                requestAnimationFrame(animateScroll);
-            } else {
-                carousel.scrollTo({
-                    left: newPosition,
-                    behavior: "smooth",
-                });
-                setScrollPosition(newPosition);
-            }
-        };
-        requestAnimationFrame(animateScroll);
-    }
-};
-
-
 useEffect(() => {
     const carousel = carouselRef.current;
     if (carousel) {
-        carousel.scrollTo({ left: 0 });
         setIsOverflowing(carousel.scrollWidth > carousel.clientWidth);
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +23,7 @@ return (
     <div className="carousel-wrapper">
         <h2>{title}</h2>
         <div className="carousel-inner-wrapper">
-            <button onClick={() => handleScroll("left")} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
+            <button onClick={() => {}} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
                 <i className="fa-solid fa-chevron-left"></i>
             </button>
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
@@ -76,14 +38,14 @@ return (
                             className="carousel__image-wrapper"
                         >
                             <img src={image} alt={movie.title} />
-                            <span className="carousel__card-title">
+                            <p className="carousel__card-title">
                                 {movie.title}
-                            </span>
+                            </p>
                         </Link>
                     );
                 })}
             </div>
-            <button onClick={() => handleScroll("right")} className={`${!isOverflowing ? "btn-off" : ""} btn-next`}>
+            <button onClick={() => {}} className={`${!isOverflowing ? "btn-off" : ""} btn-next`}>
                 <i className="fa-solid fa-chevron-right"></i>
             </button>
         </div>
