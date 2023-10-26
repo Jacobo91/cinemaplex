@@ -8,7 +8,10 @@ export default function Movies() {
     const { isLoading, error, data } = useAPI(
         'movies',
         'movies',
-        {refetchOnWindowFocus: false,}
+        {
+            refetchOnWindowFocus: false, 
+            refetchOnMount: false,
+        }
         );
 
     if (isLoading) {

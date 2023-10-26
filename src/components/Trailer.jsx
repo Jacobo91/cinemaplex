@@ -9,11 +9,12 @@ export default function Trailer() {
     const type = arr[0]
     const id = arr[1]
 
-    const {isLoading, error, data} = useAPI(
+    const {isLoading, error, data } = useAPI(
         type,
         `${type}/${id}`,
         {
             refetchOnWindowFocus: false,
+            refetchOnMount: false
         },
         `${id}`
     )
@@ -23,9 +24,14 @@ export default function Trailer() {
     }
 
     if (error) {
-        return <p>{error.message}</p>
+        if (error.message === "Request failed with status code 404") {
+            return <p>Sorry we don&apos;t have episode trailers available yet.</p>
+        } else {
+            return <p>{error.message}</p>
+        }
     }
 
+console.log(data)
     return (
         <section
             className='trailer'

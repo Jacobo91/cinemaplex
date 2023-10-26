@@ -1,6 +1,9 @@
 import { useAPI } from '../hooks/useAPI'
 import { Link, useParams } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import Carousel from './Carousel';
 
 export default function Info() {
 
@@ -14,6 +17,7 @@ export default function Info() {
         `${type}/${id}`,
         {
             refetchOnWindowFocus: false,
+            refetchOnMount: false
         },
         `${id}`
     )
@@ -34,9 +38,11 @@ export default function Info() {
             <div className="info-container">
 
                 <div className="info__poster-container">
-                    <img 
-                        src={data?.data?.[type]["poster_path"]} 
-                        alt={`${data?.data?.[type]["title"]} poster`} 
+                    {/* <img src={data?.data?.[type]["poster_path"]} alt={`${data?.data?.[type]["title"]} poster`} /> */}
+                    <LazyLoadImage 
+                        src={data?.data?.[type]["poster_path"]}
+                        alt={`${data?.data?.[type]["title"]} poster`}
+                        effect='opacity'
                     />
                 </div>
 
@@ -58,7 +64,15 @@ export default function Info() {
 
                     <div className="source">
                     {[...new Set(data?.data?.[type].sources)].map((source, i) => {
-                        return <span key={i} className='source'>{source.source}</span>
+                        return <a 
+                                    key={i} 
+                                    className='source' 
+                                    href={`https://www.${source.source.toLowerCase().replace("_", "")}.com`}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                >
+                                    {source.source.replace("_", " ")}
+                                </a>
                     })}
                     </div>
 
@@ -67,6 +81,7 @@ export default function Info() {
                             name='rating'
                             value={data?.data?.[type]["vote_average"] / 2}
                             precision={0.5}
+                            readOnly
                         />
                         <p>{data?.data?.[type]["first_aired"]}</p>
                     </div>
@@ -77,9 +92,21 @@ export default function Info() {
 
             </div>
 
-            <div className="info__similar-media">
-
-            </div>
+                {type === 'show' && 
+                    (
+                        <main>
+                            {data && data?.data?.["seasons"].map((season) => {
+                                return (
+                                    <Carousel 
+                                        key={season.season}
+                                        mediaInfo={season.episodes}
+                                        season={season.season}
+                                    />
+                                )
+                            })}
+                        </main>
+                    )
+                }
 
         </section>
     )

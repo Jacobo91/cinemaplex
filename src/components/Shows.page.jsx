@@ -8,7 +8,10 @@ export default function Shows() {
     const { isLoading, error, data } = useAPI(
         'shows',
         'shows',
-        {refetchOnWindowFocus: false,}
+        {
+            refetchOnWindowFocus: false,
+            refetchOnMount: false
+        }
         );
 
     if (isLoading) {

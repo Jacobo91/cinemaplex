@@ -7,7 +7,10 @@ export default function Home() {
     const { isLoading, error, data } = useAPI(
         'home',
         'home',
-        {refetchOnWindowFocus: false,}
+        {
+            refetchOnWindowFocus: false,
+            refetchOnMount: false,
+        }
         );
 
     if (isLoading) {
@@ -17,11 +20,9 @@ export default function Home() {
     if (error) {
         return <p>{error.message}</p>
     }
-
-
     const randomItem = Math.floor(Math.random() * 26);
     const heroMedia = data?.data[0].movies[randomItem];
-    console.log(data)
+
     return (
             <section
                 className="home"

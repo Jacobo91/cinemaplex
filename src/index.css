@@ -72,6 +72,8 @@ h2 {
 .source {
   text-transform: capitalize;
   color: var(--clr-red);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .source {
@@ -352,6 +354,7 @@ nav li > * {
   display: flex;
   aspect-ratio: 16/9;
   overflow: hidden;
+  min-height: 150px;
   max-height: 200px;
   width: 100%;
   gap: var(--spacer);
@@ -366,7 +369,14 @@ nav li > * {
   text-decoration: none;
 }
 
-.carousel img {
+/* .carousel img {
+  scroll-snap-align: center;
+  width: 100%;
+  border-radius: var(--rounded);
+  scroll-snap-align: center;
+} */
+
+.carousel__img {
   scroll-snap-align: center;
   width: 100%;
   border-radius: var(--rounded);
@@ -387,6 +397,12 @@ nav li > * {
 
 .btn-off {
   display: none;
+}
+
+
+.episode {
+  color: var(--clr-red);
+  font-weight: 500;
 }
 
 /* media queries */
