@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import Carousel from './Carousel';
+import { Carousel, Error, Loader } from './';
 
 export default function Info() {
 
@@ -23,13 +23,14 @@ export default function Info() {
     )
 
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <Loader />
     }
 
     if (error) {
-        return <p>{error.message}</p>
+        return <Error error={error}/>
     }
     console.log(data)
+
     return (
         <section
             className='info'
@@ -92,20 +93,27 @@ export default function Info() {
 
             </div>
 
-                {type === 'show' && 
+                {type === 'show' ? 
                     (
                         <main>
-                            {data && data?.data?.["seasons"].map((season) => {
+                            {data && data?.data?.["seasons"].map((element) => {
+                                console.log(element)
                                 return (
                                     <Carousel 
-                                        key={season.season}
-                                        mediaInfo={season.episodes}
-                                        season={season.season}
+                                        key={element.season || element._id}
+                                        mediaInfo={element.episodes || element}
+                                        season={element.season || null}
                                     />
                                 )
                             })}
                         </main>
-                    )
+                    ) : 
+                type === "movie" ? (
+                                <Carousel 
+                                    key={data?.data?.movie._id}
+                                    mediaInfo={data?.data?.similarMovies}
+                                />
+                ) : null
                 }
 
         </section>

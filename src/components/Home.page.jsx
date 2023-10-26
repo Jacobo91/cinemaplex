@@ -1,5 +1,5 @@
 import { useAPI } from "../hooks/useAPI";
-import { Hero, Carousel } from './'
+import { Hero, Carousel, Error, Loader } from './'
 
 export default function Home() {
 
@@ -14,11 +14,11 @@ export default function Home() {
         );
 
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <Loader />
     }
 
     if (error) {
-        return <p>{error.message}</p>
+        return <Error error={error}/>
     }
     const randomItem = Math.floor(Math.random() * 26);
     const heroMedia = data?.data[0].movies[randomItem];

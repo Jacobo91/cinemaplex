@@ -1,7 +1,7 @@
 import { useAPI } from "../hooks/useAPI";
-import { Hero } from './';
+import { Hero, Error, Loader, Carousel } from './';
 import { groupByGenre } from "../utils/groupByGenre";
-import { Carousel } from './';
+
 
 export default function Movies() {
 
@@ -15,11 +15,11 @@ export default function Movies() {
         );
 
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <Loader />
     }
 
     if (error) {
-        return <p>{error.message}</p>
+        return <Error error={error}/>
     }
     
     const randomItem = Math.floor(Math.random() * 26);

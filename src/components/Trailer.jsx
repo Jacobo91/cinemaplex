@@ -1,6 +1,7 @@
 import ReactPlayer from 'react-player'
 import { useAPI } from '../hooks/useAPI'
 import { Link, useParams } from 'react-router-dom'
+import { Error, Loader } from './'
 
 export default function Trailer() {
 
@@ -19,17 +20,14 @@ export default function Trailer() {
         `${id}`
     )
 
+
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <Loader />
     }
 
     if (error) {
-        if (error.message === "Request failed with status code 404") {
-            return <p>Sorry we don&apos;t have episode trailers available yet.</p>
-        } else {
-            return <p>{error.message}</p>
-        }
-    }
+        return <Error error={error}/>
+}
 
 console.log(data)
     return (

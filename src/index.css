@@ -88,6 +88,14 @@ main h2 {
   margin: 2rem 0 1rem 0;
 }
 
+.center-on-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* components */
 
 /* navbar */
@@ -403,6 +411,38 @@ nav li > * {
 .episode {
   color: var(--clr-red);
   font-weight: 500;
+}
+
+/* Error */
+
+.error-wrapper__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.error-custom-message {
+  font-size: 2rem;
+}
+
+/* Loader */
+
+.loader {
+  border: 5px solid #a2a2a2; /* Light gray */
+  border-top: 5px solid var(--clr-red); /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* media queries */

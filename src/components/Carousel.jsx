@@ -9,9 +9,9 @@ export default function Carousel({ mediaInfo, genre, carouselId, season }) {
 
 const [isOverflowing, setIsOverflowing] = useState(false);
 const carouselRef = useReducer(null);
-
+console.log(mediaInfo)
 const showsOrMovies = mediaInfo?.movies || mediaInfo;
-const title = mediaInfo?.title || genre || season;
+const title = mediaInfo?.title || genre || season || "Similar Movies";
 
 useEffect(() => {
     const carousel = carouselRef.current;
@@ -31,7 +31,9 @@ return (
             </button>
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
                 {showsOrMovies.map((movie) => {
-                    const image = (movie.backdrop_path && movie.backdrop_path.endsWith("originalnull")) || ( movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
+                    const image = 
+                    (movie.backdrop_path && movie.backdrop_path.endsWith("originalnull") || movie.backdrop_path.endsWith("originalundefined")) || 
+                    ( movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
                         ? fallbackImage
                         : movie.backdrop_path || movie.thumbnail_path;
                     return (
@@ -44,7 +46,7 @@ return (
                             <LazyLoadImage
                                 key={movie.title}
                                 alt={movie.title}
-                                src={image || movie.thumbnail_path}
+                                src={image}
                                 effect="opacity"
                                 className="carousel__img"
                             />
