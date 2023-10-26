@@ -9,7 +9,7 @@ export default function Carousel({ mediaInfo, genre, carouselId, season }) {
 
 const [isOverflowing, setIsOverflowing] = useState(false);
 const carouselRef = useReducer(null);
-console.log(mediaInfo)
+
 const showsOrMovies = mediaInfo?.movies || mediaInfo;
 const title = mediaInfo?.title || genre || season || "Similar Movies";
 
@@ -21,7 +21,6 @@ useEffect(() => {
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [carouselId]);
-console.log(mediaInfo)
 return (
     <div className="carousel-wrapper">
         <h2>{season ? `Season: ${season}` : title}</h2>
@@ -47,7 +46,7 @@ return (
                                 key={movie.title}
                                 alt={movie.title}
                                 src={image}
-                                effect="opacity"
+                                effect="blur"
                                 className="carousel__img"
                             />
                             <p className="carousel__card-title">

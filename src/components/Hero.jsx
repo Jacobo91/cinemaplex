@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const HeroMediaProps = {
     _id: PropTypes.string,
@@ -38,10 +40,13 @@ export default function Hero ({ heroMedia }) {
         <header
             className="hero"
         >
-            <img
+            <LazyLoadImage
                 src={heroMedia["backdrop_path"]}
                 alt={`${heroMedia.contentType} ${heroMedia.title} image`}
                 loading="lazy"
+                effect="blur"
+                className="hero-img"
+                width={"100%"}
             />
             <div className="hero-info flex">
                 <h2 className="hero_content-type">{heroMedia.contentType}</h2>

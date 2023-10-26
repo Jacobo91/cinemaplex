@@ -42,9 +42,6 @@ p {
 
 /* Globals */
 
-.hero img {
-  width: 100%;
-}
 
 body {
   background: var(--clr-black);
