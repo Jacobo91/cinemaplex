@@ -362,7 +362,7 @@ nav li > * {
   min-height: 150px;
   max-height: 200px;
   width: 100%;
-  gap: var(--spacer);
+  gap: calc(var(--spacer) / 4);
 }
 
 .carousel__image-wrapper {

@@ -6,13 +6,50 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function Carousel({ mediaInfo, genre, carouselId, season }) {
-
+const [scrollPosition, setScrollPosition] = useState(0);
 const [isOverflowing, setIsOverflowing] = useState(false);
-
 const carouselRef = useRef(null);
 
 const showsOrMovies = mediaInfo?.movies || mediaInfo;
-const title = mediaInfo?.title || genre || season || "Similar Movies";
+const title = mediaInfo?.title || genre;
+
+const handleScroll = (direction) => {
+    const carousel = carouselRef.current;
+    const itemWidth = carousel.scrollWidth / showsOrMovies.length;
+    let newPosition =
+        direction === "left" ? scrollPosition - itemWidth : scrollPosition + itemWidth;
+
+    if (newPosition < 0) {
+        newPosition = carousel.scrollWidth - carousel.clientWidth;
+    } else if (newPosition > (carousel.scrollWidth + itemWidth) - carousel.clientWidth) {
+        newPosition = 0;
+    }
+
+    if (carousel) {
+        const startTime = performance.now();
+        const duration = 20;
+        
+        const animateScroll = (currentTime) => {
+            const elapsedTime = currentTime - startTime;
+            if (elapsedTime < duration) {
+                const position = scrollPosition + (newPosition - scrollPosition) * (elapsedTime / duration);
+                carousel.scrollTo({
+                    left: position,
+                    behavior: "smooth",
+                });
+                requestAnimationFrame(animateScroll);
+            } else {
+                carousel.scrollTo({
+                    left: newPosition,
+                    behavior: "smooth",
+                });
+                setScrollPosition(newPosition);
+            }
+        };
+        requestAnimationFrame(animateScroll);
+    }
+};
+
 
 useEffect(() => {
     const carousel = carouselRef.current;
@@ -28,10 +65,11 @@ return (
     <div className="carousel-wrapper">
         <h2>{season ? `Season: ${season}` : title}</h2>
         <div className="carousel-inner-wrapper">
-            <button onClick={() => {}} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
+            <button onClick={() => handleScroll("left")} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
                 <i className="fa-solid fa-chevron-left"></i>
             </button>
             {/* Carousel */}
+
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
                 {showsOrMovies.map((movie) => {
                     const image = 
@@ -60,7 +98,7 @@ return (
                     );
                 })}
             </div>
-            <button onClick={() => {}} className={`${!isOverflowing ? "btn-off" : ""} btn-next`}>
+            <button onClick={() => handleScroll("right")} className={`${!isOverflowing ? "btn-off" : ""} btn-next`}>
                 <i className="fa-solid fa-chevron-right"></i>
             </button>
         </div>
