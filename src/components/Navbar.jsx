@@ -15,10 +15,25 @@ export default function Navbar() {
             }
         }
 
+        const navbar = document.querySelector('nav')
+        const handleScrollY = () => {
+            const scrollY = window.scrollY;
+            const windowWidth = window.innerWidth;
+            if (windowWidth > 800 && scrollY > 0) {
+                navbar.classList.add('nav-black')
+            } else {
+                navbar.classList.remove('nav-black')
+            }
+        }
+
+
         document.addEventListener("click", handleClickOutside);
+        document.addEventListener('scroll', handleScrollY);
+        window.addEventListener('resize', handleScrollY)
 
         return () => {
             document.removeEventListener("click", handleClickOutside);
+            document.removeEventListener('scroll', handleScrollY);
         };
     }, []);
 
