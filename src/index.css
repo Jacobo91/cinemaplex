@@ -216,11 +216,11 @@ nav li > * {
 
 .hero {
   position: relative;
-  max-height: 90vh;
+  max-height: 100vh;
 }
 
 .hero img {
-  max-height: 90vh;
+  max-height: 100vh;
   object-fit: cover;
 }
 
@@ -354,7 +354,7 @@ nav li > * {
   overflow: hidden;
   max-height: 150px;
   width: 100%;
-  gap: var(--spacer);
+  gap: calc(var(--spacer) / 4);
 }
 
 .carousel__image-wrapper {
@@ -392,10 +392,12 @@ nav li > * {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
-.btn-off {
-  display: none;
+.carousel-inner-wrapper button:hover {
+  opacity: 1;
 }
 
 /* media queries */

@@ -19,13 +19,14 @@ const handleScroll = (direction) => {
 
     if (newPosition < 0) {
         newPosition = carousel.scrollWidth - carousel.clientWidth;
-    } else if (newPosition > carousel.scrollWidth - carousel.clientWidth) {
+    } else if (newPosition > (carousel.scrollWidth + itemWidth) - carousel.clientWidth) {
         newPosition = 0;
     }
 
     if (carousel) {
         const startTime = performance.now();
         const duration = 20;
+        
         const animateScroll = (currentTime) => {
             const elapsedTime = currentTime - startTime;
             if (elapsedTime < duration) {
@@ -54,6 +55,7 @@ useEffect(() => {
         carousel.scrollTo({ left: 0 });
         setIsOverflowing(carousel.scrollWidth > carousel.clientWidth);
     }
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [carouselId]);
 
@@ -64,6 +66,7 @@ return (
             <button onClick={() => handleScroll("left")} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
                 <i className="fa-solid fa-chevron-left"></i>
             </button>
+
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
                 {showsOrMovies.map((movie) => {
                     const image = movie.backdrop_path.endsWith("originalnull")
