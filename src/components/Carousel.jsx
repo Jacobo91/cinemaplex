@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import fallbackImage from "../assets/img-not-av.jpg";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function Carousel({ mediaInfo, genre, carouselId, season }) {
 
 const [isOverflowing, setIsOverflowing] = useState(false);
-const carouselRef = useReducer(null);
+
+const carouselRef = useRef(null);
 
 const showsOrMovies = mediaInfo?.movies || mediaInfo;
 const title = mediaInfo?.title || genre || season || "Similar Movies";
@@ -21,6 +22,8 @@ useEffect(() => {
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [carouselId]);
+
+
 return (
     <div className="carousel-wrapper">
         <h2>{season ? `Season: ${season}` : title}</h2>
@@ -28,6 +31,7 @@ return (
             <button onClick={() => {}} className={`${!isOverflowing ? "btn-off" : ""} bnt-previous`}>
                 <i className="fa-solid fa-chevron-left"></i>
             </button>
+            {/* Carousel */}
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
                 {showsOrMovies.map((movie) => {
                     const image = 
@@ -60,6 +64,7 @@ return (
                 <i className="fa-solid fa-chevron-right"></i>
             </button>
         </div>
+
     </div>
 );
 }

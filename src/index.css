@@ -223,11 +223,11 @@ nav li > * {
 
 .hero {
   position: relative;
-  max-height: 90vh;
+  max-height: 100vh;
 }
 
 .hero img {
-  max-height: 90vh;
+  max-height: 100vh;
   object-fit: cover;
 }
 
@@ -374,13 +374,6 @@ nav li > * {
   text-decoration: none;
 }
 
-/* .carousel img {
-  scroll-snap-align: center;
-  width: 100%;
-  border-radius: var(--rounded);
-  scroll-snap-align: center;
-} */
-
 .carousel__img {
   scroll-snap-align: center;
   width: 100%;
@@ -394,14 +387,16 @@ nav li > * {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.carousel-inner-wrapper button:hover {
+  opacity: 1;
 }
 
 .carousel__card-title {
   margin-top: 1rem;
-}
-
-.btn-off {
-  display: none;
 }
 
 
