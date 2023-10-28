@@ -22,7 +22,7 @@ function SearchResults() {
     console.log(data)
     return (
         <div className='search-results'>
-            <h2>{`Results for ${searchTerm}:`}</h2>
+            <h2>{data && data?.data?.contents.length > 0 ? `Results for ${searchTerm}:` : `No Results for ${searchTerm}`}</h2>
             <div className="search-results__gallery">
                 {data && data?.data?.contents.map((movie) => {
                     const image = 

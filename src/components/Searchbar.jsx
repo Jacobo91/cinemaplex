@@ -41,6 +41,7 @@ export default function Searchbar() {
                 action=""
                 className={`searchbar-form flex  ${isOpen ? "activeSearch" : ""}`}
                 onSubmit={handleSearch}
+                role="search"
             >
                 <input
                     className={`searchbar`}
@@ -48,6 +49,8 @@ export default function Searchbar() {
                     value={searchTerm}
                     placeholder="Search..."
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    spellCheck
+                    required
                 />
             </form>
         </div>

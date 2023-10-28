@@ -222,7 +222,13 @@ nav li > * {
   background: inherit;
   color: inherit;
   cursor:text;
+  caret-color: var(--clr-red);
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
 
 /* hero */
 
@@ -407,6 +413,10 @@ nav li > * {
 
 .search-results {
   padding: 2rem;
+}
+
+.search-results h2 {
+  margin: 0 0 1rem 1rem;
 }
 
 .search-results__gallery {
