@@ -247,10 +247,6 @@ input[type="search"]::-webkit-search-cancel-button {
   text-transform: capitalize;
 }
 
-.hero__text-container {
-  border-radius: var(--rounded);
-}
-
 .hero-title {
   font-size: 4vw;
 }
@@ -264,12 +260,13 @@ input[type="search"]::-webkit-search-cancel-button {
   position: absolute;
   top: 0;
   color: var(--clr-white);
-  height: 100%;
+  height: 90%;
   width: 80%;
   --flex-dir: column;
   --alignItems: left;
   justify-content: flex-end;
   margin-left: 2rem;
+
 }
 
 .hero-btns > * {
@@ -355,18 +352,19 @@ input[type="search"]::-webkit-search-cancel-button {
   position: relative;
 }
 
-.bnt-previous {
+.carousel-inner-wrapper button {
   position: absolute;
-  left: 0;
   z-index: 100;
   height: 100%;
+  padding: 0;
+}
+
+.bnt-previous {
+  left: 0;
 }
 
 .btn-next {
-  position: absolute;
   right: 0;
-  z-index: 100;
-  height: 100%;
 }
 
 .carousel {
@@ -399,7 +397,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background: rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
