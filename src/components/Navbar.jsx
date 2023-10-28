@@ -33,7 +33,8 @@ export default function Navbar() {
 
         return () => {
             document.removeEventListener("click", handleClickOutside);
-            document.removeEventListener('scroll', handleScrollY);
+            document.removeEventListener('scroll', handleScrollY); 
+            window.removeEventListener('resize', handleScrollY)
         };
     }, []);
 
