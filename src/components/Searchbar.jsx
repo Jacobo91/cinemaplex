@@ -1,10 +1,19 @@
 import { useState, useRef, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 
 export default function Searchbar() {
 
-    const [searchTerm, setSearchTerm] = useState("")
-    const [isOpen, setIsOpen] = useState(false)
-    const searchBarRef = useRef()
+    const [searchTerm, setSearchTerm] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const searchBarRef = useRef();
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/search-results/${searchTerm}`)
+
+        setSearchTerm("")
+    };
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -31,7 +40,7 @@ export default function Searchbar() {
             <form 
                 action=""
                 className={`searchbar-form flex  ${isOpen ? "activeSearch" : ""}`}
-                onSubmit={() => {}}
+                onSubmit={handleSearch}
             >
                 <input
                     className={`searchbar`}

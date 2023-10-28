@@ -15,8 +15,8 @@ export default function Navbar() {
             }
         }
 
-        const navbar = document.querySelector('nav')
         const handleScrollY = () => {
+            const navbar = document.querySelector('nav')
             const scrollY = window.scrollY;
             const windowWidth = window.innerWidth;
             if (windowWidth > 800 && scrollY > 0) {

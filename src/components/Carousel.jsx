@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import fallbackImage from "../assets/img-not-av.jpg";
-import { Link } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Card from "./Card";
 
 export default function Carousel({ mediaInfo, genre, carouselId, season }) {
 const [scrollPosition, setScrollPosition] = useState(0);
@@ -78,23 +77,14 @@ return (
                         ? fallbackImage
                         : movie.backdrop_path || movie.thumbnail_path;
                     return (
-                        <Link
-                            to={`/trailer/${`${movie.contentType}-${movie["_id"]} `}`} 
-                            key={movie._id} 
-                            className="carousel__image-wrapper"
-                            
-                        >
-                            <LazyLoadImage
-                                key={movie.title}
-                                alt={movie.title}
-                                src={image}
-                                effect="blur"
-                                className="carousel__img"
-                            />
-                            <p className="carousel__card-title">
-                                <span className="episode">{movie.episode_number && `Episode ${movie.episode_number}:`}</span> {movie.title}
-                            </p>
-                        </Link>
+                                <Card 
+                                    key={movie._id}
+                                    contentType={movie.contentType}
+                                    id={movie._id}
+                                    title={movie.title}
+                                    image={image}
+                                    episodeNumber={movie.episode_number}
+                                />
                     );
                 })}
             </div>
@@ -106,7 +96,6 @@ return (
     </div>
 );
 }
-
 
 Carousel.propTypes = {
         mediaInfo: PropTypes.shape({

@@ -4,7 +4,8 @@ import { Home,
         Shows,
         Navbar,
         Trailer,
-        Info} from './components'
+        Info,
+        SearchResults} from './components'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path="/trailer/:path" element={<Trailer />} />
         <Route path="/Info/:path" element={<Info />} />
+        <Route path="/search-results/:searchTerm" element={<SearchResults />} />
       </Routes>
     </BrowserRouter>
   )

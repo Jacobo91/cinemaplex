@@ -7,7 +7,7 @@ function Error({ error }) {
             <div className="error-wrapper__content">
                 <img src={errorImage} alt="error-image" className='error-img' />
                 <p className='error-custom-message'>
-                    {error.message === "Request failed with status code 404" ? "Page not found" : ""}
+                    {error.message === "Request failed with status code 404" ? "Page not found" : `${error.message}`}
                 </p>
             </div>
         </div>

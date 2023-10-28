@@ -313,7 +313,7 @@ nav li > * {
   align-items: center;
   gap: calc(var(--spacer)* 1);
   max-width: 50rem;
-  margin: 0 auto;
+  margin: 0 auto 1rem auto;
 }
 
 .info__text {
@@ -391,12 +391,6 @@ nav li > * {
   color: white;
   font-size: 2rem;
   cursor: pointer;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}
-
-.carousel-inner-wrapper button:hover {
-  opacity: 1;
 }
 
 .carousel__card-title {
@@ -407,6 +401,19 @@ nav li > * {
 .episode {
   color: var(--clr-red);
   font-weight: 500;
+}
+
+/* Search Results */
+
+.search-results {
+  padding: 2rem;
+}
+
+.search-results__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center;
 }
 
 /* Error */
@@ -448,7 +455,7 @@ nav li > * {
   nav {
     position: fixed;
     width: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.1);
   }
 
   .nav__menu-wrapper {
@@ -490,6 +497,14 @@ nav li > * {
 
   .info {
     padding: calc(var(--spacer) * 4);
+  }
+
+  .trailer__title {
+    margin-top: 74px;
+  }
+
+  .search-results {
+    margin-top: 74px;
   }
 
 }
