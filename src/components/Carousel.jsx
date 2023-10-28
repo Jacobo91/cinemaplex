@@ -72,10 +72,14 @@ return (
             <div id={`carousel-${carouselId}`} className="carousel" ref={carouselRef}>
                 {showsOrMovies.map((movie) => {
                     const image = 
-                    (movie.backdrop_path && movie.backdrop_path.endsWith("originalnull") || movie.backdrop_path.endsWith("originalundefined")) || 
-                    ( movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
-                        ? fallbackImage
-                        : movie.backdrop_path || movie.thumbnail_path;
+                    (movie && 
+                        (
+                            (movie.backdrop_path && (movie.backdrop_path.endsWith("originalnull") || movie.backdrop_path.endsWith("originalundefined"))) ||
+                            (movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
+                        ))
+                            ? fallbackImage
+                            : (movie.backdrop_path || movie.thumbnail_path);
+
                     return (
                                 <Card 
                                     key={movie._id}

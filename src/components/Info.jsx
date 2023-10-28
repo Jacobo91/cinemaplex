@@ -93,6 +93,8 @@ export default function Info() {
 
             </div>
 
+            <div className='similar-picks-carousel'>
+                <h2>Similar:</h2>
                 {type === 'show' ? 
                     (
                         <main>
@@ -115,6 +117,7 @@ export default function Info() {
                                 />
                 ) : null
                 }
+            </div>
 
         </section>
     )

@@ -19,17 +19,19 @@ function SearchResults() {
     if (error) {
         return <Error error={error}/>
     }
-    console.log(data)
     return (
         <div className='search-results'>
             <h2>{data && data?.data?.contents.length > 0 ? `Results for ${searchTerm}:` : `No Results for ${searchTerm}`}</h2>
             <div className="search-results__gallery">
                 {data && data?.data?.contents.map((movie) => {
                     const image = 
-                    (movie.backdrop_path && movie.backdrop_path.endsWith("originalnull") || movie.backdrop_path.endsWith("originalundefined")) || 
-                    ( movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
-                        ? fallbackImage
-                        : movie.backdrop_path || movie.thumbnail_path;
+                    (movie && 
+                        (
+                            (movie.backdrop_path && (movie.backdrop_path.endsWith("originalnull") || movie.backdrop_path.endsWith("originalundefined"))) ||
+                            (movie.thumbnail_path && movie.thumbnail_path.endsWith("originalnull"))
+                        ))
+                            ? fallbackImage
+                            : (movie.backdrop_path || movie.thumbnail_path);
                     return (
                                 <Card 
                                     key={movie._id}
